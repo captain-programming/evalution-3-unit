@@ -6,7 +6,7 @@ let selectedMovie=JSON.parse(localStorage.getItem("movie"));
 
 let movie=document.getElementById("movie");
 
-console.log(selectedMovie);
+// console.log(selectedMovie);
 
 let div=document.createElement("div")
 
@@ -22,5 +22,22 @@ movie.append(div);
 
 function submit(){
     let userName=document.getElementById("user_name").value;
-    let userSeat=document.getElementById("user_name").value;
+    let userSeat=document.getElementById("number_of_seats").value;
+    console.log(userSeat);
+
+    let userBalaced=localStorage.getItem("amount");
+    // console.log(userBalaced);
+
+    let bookAmount=userSeat*100;
+    console.log(bookAmount);
+    if(userBalaced>=bookAmount){
+        dedetectedAmount=userBalaced-bookAmount;
+        alert('Booking successful!');
+        localStorage.setItem("amount", dedetectedAmount);
+
+
+        document.getElementById("wallet").innerText=dedetectedAmount;
+    }else{
+        alert('Insufficient Balance!');
+    }
 }
